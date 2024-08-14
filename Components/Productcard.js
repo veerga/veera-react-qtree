@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from "../Assetsimage/c1.png";
+// import img1 from "../Assetsimage/c1.png";
 
 function Productcard(props) {
   return (

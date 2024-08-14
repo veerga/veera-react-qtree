@@ -5,7 +5,7 @@ import img2 from "../Assetsimage/c2.jpg";
 import img3 from "../Assetsimage/c3.jpg";
 import img4 from "../Assetsimage/c4.jpg";
 import img5 from "../Assetsimage/c5.jpg";
-import img6 from "../Assetsimage/c6.jpg"
+import img6 from "../Assetsimage/c6.jpg";
 
 
 
@@ -33,7 +33,7 @@ function Shoppingcart() {
   {
     id:3,
       name:"kadhal",
-      price:"Rs400",
+      price:"Rs300",
       img:img3,
       desc:"It is believed to have originated in the early 1900s, around the time when motion pictures were first becoming popular",
       isstock:true
