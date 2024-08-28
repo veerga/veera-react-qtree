@@ -22,6 +22,14 @@ const Userlist=()=> {
       
           setuser(userdata.data);
         };
+
+        const handledelete =async (id)=>{
+         await axios.delete(
+            `https://66c777fd732bf1b79fa6a44a.mockapi.io/uselist/${id}`
+          );
+          getdata();
+          alert("user deleted")
+        };
         // Create     read      update     delete
         // POST       GET        PUT       DELETE
   return (
@@ -31,9 +39,9 @@ const Userlist=()=> {
       <thead>
         <tr>
           <th scope="col">ID</th>
-          <th scope="col">Name</th>
+          <th scope="col">firstname</th>
           <th scope="col">Age</th>
-          <th scope="col">mobile</th>
+          <th scope="col">mobilenumber</th>
           <th scope="col">address</th>
           <th scope="col">Emailid</th>
           <th scope="col">Password</th>
@@ -44,16 +52,18 @@ const Userlist=()=> {
           return (
             <tr>
               <th scope="row">{index + 1}</th>
-              {/* <td>{item1.ID}</td> */}
-              <td>{item1.name}</td>
-              <td>{item1.age}</td>
+              
+              <td>{item1.firstname}</td>
+              <td>{item1.Age}</td>
               <td>{item1.mobilenumber}</td>
               <td>{item1.address}</td>
-              <td>{item1.emailid}</td>
+              <td>{item1.Emailid}</td>
               <td>{item1.password}</td>
               <td>
-              <button className="btn btn-success btn-sm">Edit</button>
-              <button className="btn btn-danger btn-sm">delete</button>
+              <Link to={`/edit/${item1.id}`} className="btn btn-success btn-sm">Edit</Link>
+              <button className="btn btn-danger btn-sm" onClick={()=>{
+                handledelete(item1.id);
+              }}>delete</button>
               </td>
           
             </tr>

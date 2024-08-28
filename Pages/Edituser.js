@@ -1,10 +1,10 @@
 import axios from "axios";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Createuser.css";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
-const Createuser = () => {
+function Edituser() {
   const Navigate = useNavigate();
+  const params = useParams();
 
   const [userinput, setuserinput] = useState({
     firstname: "",
@@ -14,6 +14,17 @@ const Createuser = () => {
     password: "",
   });
 
+  useEffect(() => {
+    getuserdata();
+  }, []);
+
+  const getuserdata = async () => {
+    const userdata = await axios.get(
+      `https://66c777fd732bf1b79fa6a44a.mockapi.io/uselist/${params.id}`
+    );
+    setuserinput(userdata.data);
+  };
+
   const handlechange = ({ target: { value, name } }) => {
     setuserinput({ ...userinput, [name]: value });
   };
@@ -22,9 +33,8 @@ const Createuser = () => {
     e.preventDefault();
 
     const { firstname, Age, Emailid, mobilenumber, password } = userinput;
-
-    const postdata = await axios.post(
-      "https://66c777fd732bf1b79fa6a44a.mockapi.io/uselist",
+    await axios.put(
+      `https://66c777fd732bf1b79fa6a44a.mockapi.io/uselist/${params.id}`,
       {
         firstname,
         Age,
@@ -33,7 +43,6 @@ const Createuser = () => {
         password,
       }
     );
-
     alert("User Registered Successfully");
 
     Navigate("/");
@@ -42,7 +51,7 @@ const Createuser = () => {
     <div className="userRegisterForm">
       <form onSubmit={handlesubmit}>
         <h1 style={{ textAlign: "center" }} className="mb-5">
-          User Register
+          Edit user
         </h1>
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">
@@ -110,6 +119,6 @@ const Createuser = () => {
       </form>
     </div>
   );
-};
+}
 
-export default Createuser;
+export default Edituser;
