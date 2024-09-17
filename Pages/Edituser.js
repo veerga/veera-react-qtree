@@ -42,6 +42,7 @@ function Edituser() {
         mobilenumber,
         password,
       }
+      // getuserdata()
     );
     alert("User Registered Successfully");
 

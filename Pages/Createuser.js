@@ -21,17 +21,18 @@ const Createuser = () => {
   const handlesubmit = async (e) => {
     e.preventDefault();
 
-    const { firstname, Age, Emailid, mobilenumber, password } = userinput;
+    // const { firstname, Age, Emailid, mobilenumber, password } = userinput;
 
     const postdata = await axios.post(
       "https://66c777fd732bf1b79fa6a44a.mockapi.io/uselist",
-      {
-        firstname,
-        Age,
-        Emailid,
-        mobilenumber,
-        password,
-      }
+      // {
+      //   firstname,
+      //   Age,
+      //   Emailid,
+      //   mobilenumber,
+      //   password,
+      // }
+      setuserinput
     );
 
     alert("User Registered Successfully");
